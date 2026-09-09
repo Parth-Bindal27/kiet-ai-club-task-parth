@@ -1,6 +1,6 @@
 base_config: ../base.yaml
 experiment:
   name: exp_f_inject_10
-  generations: 3
+  generations: 1
 data:
   synthetic_ratio: 0.9

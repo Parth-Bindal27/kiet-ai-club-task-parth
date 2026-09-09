@@ -18,11 +18,11 @@ checkpoints/
 *.pth
 
 # Large raw and processed datasets (reproducible via scripts/prepare_data.py)
-data/
-data/raw/
-data/processed/
-data/synthetic/
-data/mixed/
+/data/
+/data/raw/
+/data/processed/
+/data/synthetic/
+/data/mixed/
 
 # Logs and cache
 logs/

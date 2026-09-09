@@ -1,0 +1,19 @@
+{
+  "generation": 0,
+  "perplexity": 15.24458122253418,
+  "rouge": {
+    "rouge1": 0.12604875142866342,
+    "rouge2": 0.026777059927216663,
+    "rougeL": 0.09502666940338042
+  },
+  "model_collapse_index": {
+    "mci": 0.4,
+    "components": {
+      "performance": 0.0,
+      "diversity": 1.0,
+      "distribution": 0.0,
+      "duplication": 0.0,
+      "rare_features": 1.0
+    }
+  }
+}

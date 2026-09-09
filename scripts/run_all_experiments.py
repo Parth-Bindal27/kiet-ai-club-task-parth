@@ -62,11 +62,11 @@ def main():
             runner = ExperimentRunner(config_path, project_root=PROJECT_ROOT)
             result_dir = runner.run()
             results[exp_name] = {"status": "SUCCESS", "dir": result_dir}
-            print(f"✓ {exp_name} completed successfully")
+            print(f"[SUCCESS] {exp_name} completed successfully")
         except Exception as e:
             logger.error(f"Experiment {exp_name} failed: {e}")
             results[exp_name] = {"status": "FAILED", "error": str(e)}
-            print(f"✗ {exp_name} failed: {e}")
+            print(f"[FAILED] {exp_name} failed: {e}")
 
     print(f"\n{'='*60}")
     print("ALL EXPERIMENTS SUMMARY")

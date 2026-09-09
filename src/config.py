@@ -18,6 +18,7 @@ class ExperimentConfig:
     generations: int = 5
     output_dir: str = "results"
     log_dir: str = "logs"
+    curriculum_mixing: bool = False
 
 
 @dataclass
@@ -107,6 +108,7 @@ class FilteringConfig:
     min_length: int = 10
     max_length: int = 2048
     max_repetition_ratio: float = 0.5
+    entropy_filter: bool = False
 
     def __post_init__(self):
         if isinstance(self.enabled, str):
@@ -119,6 +121,8 @@ class FilteringConfig:
         self.min_length = int(self.min_length)
         self.max_length = int(self.max_length)
         self.max_repetition_ratio = float(self.max_repetition_ratio)
+        if isinstance(self.entropy_filter, str):
+            self.entropy_filter = self.entropy_filter.lower() in ("true", "1", "yes")
 
 
 @dataclass

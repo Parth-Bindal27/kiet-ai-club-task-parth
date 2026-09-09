@@ -1,0 +1,47 @@
+{
+  "generation": 1,
+  "perplexity": 11.419822692871094,
+  "rouge": {
+    "rouge1": 0.11570108935699638,
+    "rouge2": 0.020299786970413427,
+    "rougeL": 0.08128663978890428
+  },
+  "lexical_diversity": {
+    "vocabulary_size": 1032,
+    "type_token_ratio": 0.32950191570881227,
+    "unique_unigrams": 1032,
+    "unique_bigrams": 2701,
+    "unique_trigrams": 3077,
+    "hapax_legomena_ratio": 0.6560077519379846
+  },
+  "semantic_diversity": {
+    "pairwise_cosine_similarity": 0.0669836476445198,
+    "embedding_variance": 0.0023811354767531157
+  },
+  "js_divergence": 0.7622557030066934,
+  "embedding_distance": {
+    "js_divergence": 0.7622557030066934,
+    "wasserstein_distance": 0.05779570098669833,
+    "mean_cosine_shift": 0.31658631563186646
+  },
+  "duplication": {
+    "exact_duplicate_rate": 0.0,
+    "normalized_duplicate_rate": 0.0,
+    "self_repetition": 0.00040563562539967313
+  },
+  "rare_features": {
+    "common": 0.05728279386712096,
+    "medium": 0.0019163206643244969,
+    "rare": 0.001277592448009085
+  },
+  "model_collapse_index": {
+    "mci": 0.26692308879792803,
+    "components": {
+      "performance": 0.26744897381647226,
+      "diversity": 0.0,
+      "distribution": 1.0,
+      "duplication": 0.00040563562539967313,
+      "rare_features": 0.0
+    }
+  }
+}

@@ -4,6 +4,7 @@ import json
 from src.filtering.validation import validate_example
 from src.filtering.deduplication import ExactDeduplicator, NormalizedDeduplicator, NGramDeduplicator
 from src.filtering.quality import filter_by_quality
+from src.filtering.entropy import EntropyFilter
 
 class FilteringPipeline:
     def __init__(self, config):
@@ -43,6 +44,12 @@ class FilteringPipeline:
         if self.config.quality_filter:
             current_examples, qual_stats = filter_by_quality(current_examples, self.config.min_quality_score)
             stats["quality"] = qual_stats
+            
+        # Entropy
+        if getattr(self.config, "entropy_filter", False):
+            entropy_filter = EntropyFilter()
+            current_examples, entropy_stats = entropy_filter.filter(current_examples)
+            stats["entropy"] = entropy_stats
             
         stats["original_count"] = len(examples)
         stats["final_count"] = len(current_examples)

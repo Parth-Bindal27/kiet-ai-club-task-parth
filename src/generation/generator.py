@@ -16,7 +16,7 @@ class SyntheticDataGenerator:
         self.config = config
 
     def generate(self, model_path: str, instructions: list[dict], output_path: str, generation: int) -> dict:
-        device = "mps" if torch.backends.mps.is_available() else "cpu"
+        device = "mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu")
         
         logger.info(f"Generating data using {device}")
         set_seed(self.config.generation.seed)

@@ -1,7 +1,7 @@
 base_config: ../base.yaml
 experiment:
   name: exp_e_temp_02
-  generations: 3
+  generations: 1
 data:
   synthetic_ratio: 1.0
 generation:

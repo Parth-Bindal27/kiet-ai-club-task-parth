@@ -56,7 +56,7 @@ class Evaluator:
             Dict of all computed metrics.
         """
         results = {"generation": generation}
-        device = "mps" if torch.backends.mps.is_available() else "cpu"
+        device = "mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu")
 
         enabled_metrics = self.config.evaluation.metrics
 

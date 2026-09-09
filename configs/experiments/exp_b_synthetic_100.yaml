@@ -1,6 +1,6 @@
 base_config: ../base.yaml
 experiment:
   name: exp_b_synthetic_100
-  generations: 3
+  generations: 1
 data:
   synthetic_ratio: 1.0

@@ -1,0 +1,9 @@
+{
+  "generation": 0,
+  "perplexity": Infinity,
+  "rouge": {
+    "rouge1": 0,
+    "rouge2": 0,
+    "rougeL": 0
+  }
+}

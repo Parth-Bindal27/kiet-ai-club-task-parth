@@ -16,7 +16,7 @@ class ModelTrainer:
 
     def train(self, train_data_path: str, val_data_path: str, output_dir: str, generation: int) -> dict:
         """Trains from base checkpoint using formatted data."""
-        device = "mps" if torch.backends.mps.is_available() else "cpu"
+        device = "mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu")
         # MPS doesn't support fp16 well
         use_fp16 = self.config.training.fp16 and device != "mps"
         
@@ -38,7 +38,12 @@ class ModelTrainer:
             return Dataset.from_list(formatted_data)
             
         train_dataset = load_and_format(train_data_path)
+        if self.config.data.max_train_samples and self.config.data.max_train_samples < len(train_dataset):
+            train_dataset = train_dataset.select(range(self.config.data.max_train_samples))
+            
         val_dataset = load_and_format(val_data_path) if val_data_path else None
+        if val_dataset and self.config.evaluation.max_eval_samples and self.config.evaluation.max_eval_samples < len(val_dataset):
+            val_dataset = val_dataset.select(range(self.config.evaluation.max_eval_samples))
         
         def tokenize_function(examples):
             return tokenizer(examples["text"], truncation=True, max_length=self.config.training.max_seq_length)

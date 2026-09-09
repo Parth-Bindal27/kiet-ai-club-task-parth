@@ -107,7 +107,11 @@ class ExperimentRunner:
                     )
 
                 # Mix real and synthetic data based on config
-                synthetic_ratio = self.config.data.synthetic_ratio
+                # Curriculum Mixing
+                if getattr(self.config.experiment, "curriculum_mixing", False):
+                    synthetic_ratio = min(1.0, 0.2 * gen)
+                else:
+                    synthetic_ratio = self.config.data.synthetic_ratio
                 if synthetic_ratio >= 1.0:
                     # 100% synthetic
                     train_data_path = synthetic_data_path
