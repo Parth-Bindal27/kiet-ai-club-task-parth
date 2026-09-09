@@ -1,0 +1,10 @@
+base_config: ../base.yaml
+experiment:
+  name: exp_d_filtering_all
+  generations: 3
+data:
+  synthetic_ratio: 1.0
+filtering:
+  enabled: true
+  deduplication: true
+  quality_filter: true

@@ -1,0 +1,297 @@
+{
+  "config": {
+    "experiment": {
+      "name": "exp_a_real_baseline",
+      "seed": 42,
+      "generations": 3,
+      "output_dir": "results",
+      "log_dir": "logs"
+    },
+    "model": {
+      "name": "gpt2",
+      "use_lora": false,
+      "lora_rank": 16,
+      "lora_alpha": 32,
+      "lora_dropout": 0.05
+    },
+    "training": {
+      "learning_rate": 5e-05,
+      "batch_size": 4,
+      "gradient_accumulation_steps": 2,
+      "num_epochs": 1,
+      "warmup_ratio": 0.0,
+      "max_seq_length": 256,
+      "fp16": false,
+      "weight_decay": 0.01
+    },
+    "generation": {
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "max_new_tokens": 64,
+      "repetition_penalty": 1.2,
+      "num_samples": 150,
+      "batch_size": 8,
+      "seed": 42,
+      "prompt_template": "alpaca"
+    },
+    "data": {
+      "dataset_name": "yahma/alpaca-cleaned",
+      "train_ratio": 0.8,
+      "val_ratio": 0.1,
+      "test_ratio": 0.1,
+      "synthetic_ratio": 0.0,
+      "max_train_samples": 150,
+      "data_dir": "data"
+    },
+    "filtering": {
+      "enabled": true,
+      "deduplication": true,
+      "dedup_method": "normalized",
+      "quality_filter": true,
+      "min_quality_score": 4.0,
+      "min_length": 5,
+      "max_length": 2048,
+      "max_repetition_ratio": 0.6
+    },
+    "evaluation": {
+      "metrics": [
+        "perplexity",
+        "rouge",
+        "diversity",
+        "distribution_shift",
+        "duplication",
+        "rare_features"
+      ],
+      "batch_size": 8,
+      "max_eval_samples": 50
+    }
+  },
+  "generations": {
+    "0": {
+      "metrics": {
+        "generation": 0,
+        "perplexity": 11.33458423614502,
+        "rouge": {
+          "rouge1": 0.1595699870940389,
+          "rouge2": 0.04713871379844825,
+          "rougeL": 0.12275105634254123
+        },
+        "model_collapse_index": {
+          "mci": 0.4,
+          "components": {
+            "performance": 0.0,
+            "diversity": 1.0,
+            "distribution": 0.0,
+            "duplication": 0.0,
+            "rare_features": 1.0
+          }
+        }
+      },
+      "training_stats": {
+        "train_runtime": 6.1828,
+        "train_samples_per_second": 8.087,
+        "train_steps_per_second": 1.132,
+        "total_flos": 5613696000000.0,
+        "train_loss": 2.816705976213728,
+        "epoch": 1.0,
+        "compute": {
+          "wall_time_seconds": 9.925012826919556,
+          "device": "mps"
+        }
+      },
+      "generation_stats": {}
+    },
+    "1": {
+      "metrics": {
+        "generation": 1,
+        "perplexity": 11.334587097167969,
+        "rouge": {
+          "rouge1": 0.1595699870940389,
+          "rouge2": 0.04713871379844825,
+          "rougeL": 0.12275105634254123
+        },
+        "lexical_diversity": {
+          "vocabulary_size": 1043,
+          "type_token_ratio": 0.33688630490956073,
+          "unique_unigrams": 1043,
+          "unique_bigrams": 2677,
+          "unique_trigrams": 3036,
+          "hapax_legomena_ratio": 0.6720997123681688
+        },
+        "semantic_diversity": {
+          "pairwise_cosine_similarity": 0.06983388215303421,
+          "embedding_variance": 0.0023738613817840815
+        },
+        "js_divergence": 0.7604883757170426,
+        "embedding_distance": {
+          "js_divergence": 0.7604883757170426,
+          "wasserstein_distance": 0.029500048210206728,
+          "mean_cosine_shift": 0.26217079162597656
+        },
+        "duplication": {
+          "exact_duplicate_rate": 0.0,
+          "normalized_duplicate_rate": 0.0,
+          "self_repetition": 0.0004919061049193932
+        },
+        "rare_features": {
+          "common": 0.05792163543441227,
+          "medium": 0.0021292451825827745,
+          "rare": 0.0014905245226772659
+        },
+        "model_collapse_index": {
+          "mci": 0.20007378591573793,
+          "components": {
+            "performance": 0.0,
+            "diversity": 0.0,
+            "distribution": 1.0,
+            "duplication": 0.0004919061049193932,
+            "rare_features": 0.0
+          }
+        }
+      },
+      "training_stats": {
+        "train_runtime": 5.9762,
+        "train_samples_per_second": 8.366,
+        "train_steps_per_second": 1.171,
+        "total_flos": 5613696000000.0,
+        "train_loss": 2.8167057037353516,
+        "epoch": 1.0,
+        "compute": {
+          "wall_time_seconds": 10.15372610092163,
+          "device": "mps"
+        }
+      },
+      "generation_stats": {
+        "synthetic_data_path": "/Users/ujjwalvishwakarma/.gemini/antigravity/scratch/model-collapse-study/data/synthetic/generation_1/synthetic_data_filtered.jsonl"
+      }
+    },
+    "2": {
+      "metrics": {
+        "generation": 2,
+        "perplexity": 11.33458423614502,
+        "rouge": {
+          "rouge1": 0.1595699870940389,
+          "rouge2": 0.04713871379844825,
+          "rougeL": 0.12275105634254123
+        },
+        "lexical_diversity": {
+          "vocabulary_size": 1043,
+          "type_token_ratio": 0.33688630490956073,
+          "unique_unigrams": 1043,
+          "unique_bigrams": 2677,
+          "unique_trigrams": 3036,
+          "hapax_legomena_ratio": 0.6720997123681688
+        },
+        "semantic_diversity": {
+          "pairwise_cosine_similarity": 0.06983388215303421,
+          "embedding_variance": 0.0023738613817840815
+        },
+        "js_divergence": 0.7604883757170426,
+        "embedding_distance": {
+          "js_divergence": 0.7604883757170426,
+          "wasserstein_distance": 0.029500048210206728,
+          "mean_cosine_shift": 0.26217079162597656
+        },
+        "duplication": {
+          "exact_duplicate_rate": 0.0,
+          "normalized_duplicate_rate": 0.0,
+          "self_repetition": 0.0004919061049193932
+        },
+        "rare_features": {
+          "common": 0.05792163543441227,
+          "medium": 0.0021292451825827745,
+          "rare": 0.0014905245226772659
+        },
+        "model_collapse_index": {
+          "mci": 0.20007378591573793,
+          "components": {
+            "performance": 0.0,
+            "diversity": 0.0,
+            "distribution": 1.0,
+            "duplication": 0.0004919061049193932,
+            "rare_features": 0.0
+          }
+        }
+      },
+      "training_stats": {
+        "train_runtime": 5.9647,
+        "train_samples_per_second": 8.383,
+        "train_steps_per_second": 1.174,
+        "total_flos": 5613696000000.0,
+        "train_loss": 2.816705976213728,
+        "epoch": 1.0,
+        "compute": {
+          "wall_time_seconds": 9.804468870162964,
+          "device": "mps"
+        }
+      },
+      "generation_stats": {
+        "synthetic_data_path": "/Users/ujjwalvishwakarma/.gemini/antigravity/scratch/model-collapse-study/data/synthetic/generation_2/synthetic_data_filtered.jsonl"
+      }
+    },
+    "3": {
+      "metrics": {
+        "generation": 3,
+        "perplexity": 11.334587097167969,
+        "rouge": {
+          "rouge1": 0.1595699870940389,
+          "rouge2": 0.04713871379844825,
+          "rougeL": 0.12275105634254123
+        },
+        "lexical_diversity": {
+          "vocabulary_size": 1043,
+          "type_token_ratio": 0.33688630490956073,
+          "unique_unigrams": 1043,
+          "unique_bigrams": 2677,
+          "unique_trigrams": 3036,
+          "hapax_legomena_ratio": 0.6720997123681688
+        },
+        "semantic_diversity": {
+          "pairwise_cosine_similarity": 0.06983388215303421,
+          "embedding_variance": 0.0023738613817840815
+        },
+        "js_divergence": 0.7604883757170426,
+        "embedding_distance": {
+          "js_divergence": 0.7604883757170426,
+          "wasserstein_distance": 0.029500048210206728,
+          "mean_cosine_shift": 0.26217079162597656
+        },
+        "duplication": {
+          "exact_duplicate_rate": 0.0,
+          "normalized_duplicate_rate": 0.0,
+          "self_repetition": 0.0004919061049193932
+        },
+        "rare_features": {
+          "common": 0.05792163543441227,
+          "medium": 0.0021292451825827745,
+          "rare": 0.0014905245226772659
+        },
+        "model_collapse_index": {
+          "mci": 0.20007378591573793,
+          "components": {
+            "performance": 0.0,
+            "diversity": 0.0,
+            "distribution": 1.0,
+            "duplication": 0.0004919061049193932,
+            "rare_features": 0.0
+          }
+        }
+      },
+      "training_stats": {
+        "train_runtime": 6.0035,
+        "train_samples_per_second": 8.328,
+        "train_steps_per_second": 1.166,
+        "total_flos": 5613696000000.0,
+        "train_loss": 2.816705976213728,
+        "epoch": 1.0,
+        "compute": {
+          "wall_time_seconds": 10.078745126724243,
+          "device": "mps"
+        }
+      },
+      "generation_stats": {
+        "synthetic_data_path": "/Users/ujjwalvishwakarma/.gemini/antigravity/scratch/model-collapse-study/data/synthetic/generation_3/synthetic_data_filtered.jsonl"
+      }
+    }
+  }
+}

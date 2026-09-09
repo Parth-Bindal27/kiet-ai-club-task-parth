@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Model checkpoints & weights (exceeds GitHub 100MB limit)
+checkpoints/
+**/checkpoints/
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Large raw and processed datasets (reproducible via scripts/prepare_data.py)
+data/
+data/raw/
+data/processed/
+data/synthetic/
+data/mixed/
+
+# Logs and cache
+logs/
+*.log
+.cache/
+wandb/
+.pytest_cache/
+
+# OS files
+.DS_Store
+Thumbs.db

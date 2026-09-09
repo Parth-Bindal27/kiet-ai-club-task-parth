@@ -1,0 +1,57 @@
+experiment:
+  name: "smoke_test"
+  seed: 42
+  generations: 1
+  output_dir: "results"
+  log_dir: "logs"
+
+model:
+  name: "gpt2"
+  use_lora: false
+
+training:
+  learning_rate: 5e-5
+  batch_size: 2
+  gradient_accumulation_steps: 1
+  num_epochs: 1
+  warmup_ratio: 0.0
+  max_seq_length: 128
+  fp16: false
+  weight_decay: 0.01
+
+generation:
+  temperature: 0.7
+  top_p: 0.9
+  max_new_tokens: 64
+  repetition_penalty: 1.2
+  num_samples: 10
+  batch_size: 2
+  seed: 42
+  prompt_template: "alpaca"
+
+data:
+  dataset_name: "yahma/alpaca-cleaned"
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  synthetic_ratio: 1.0
+  max_train_samples: 50
+  data_dir: "data"
+
+filtering:
+  enabled: true
+  deduplication: true
+  dedup_method: "normalized"
+  quality_filter: true
+  min_quality_score: 3
+  min_length: 5
+  max_length: 2048
+  max_repetition_ratio: 0.8
+
+evaluation:
+  metrics:
+    - "perplexity"
+    - "diversity"
+    - "duplication"
+  batch_size: 2
+  max_eval_samples: 20

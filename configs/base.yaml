@@ -1,0 +1,63 @@
+experiment:
+  name: "base"
+  seed: 42
+  generations: 3
+  output_dir: "results"
+  log_dir: "logs"
+
+model:
+  name: "gpt2"
+  use_lora: false
+  lora_rank: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+
+training:
+  learning_rate: 5e-5
+  batch_size: 4
+  gradient_accumulation_steps: 2
+  num_epochs: 1
+  warmup_ratio: 0.0
+  max_seq_length: 256
+  fp16: false
+  weight_decay: 0.01
+
+generation:
+  temperature: 0.7
+  top_p: 0.9
+  max_new_tokens: 64
+  repetition_penalty: 1.2
+  num_samples: 150
+  batch_size: 8
+  seed: 42
+  prompt_template: "alpaca"
+
+data:
+  dataset_name: "yahma/alpaca-cleaned"
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  synthetic_ratio: 1.0
+  max_train_samples: 150
+  data_dir: "data"
+
+filtering:
+  enabled: true
+  deduplication: true
+  dedup_method: "normalized"
+  quality_filter: true
+  min_quality_score: 4.0
+  min_length: 5
+  max_length: 2048
+  max_repetition_ratio: 0.6
+
+evaluation:
+  metrics:
+    - "perplexity"
+    - "rouge"
+    - "diversity"
+    - "distribution_shift"
+    - "duplication"
+    - "rare_features"
+  batch_size: 8
+  max_eval_samples: 50

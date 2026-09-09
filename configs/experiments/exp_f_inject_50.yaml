@@ -1,0 +1,6 @@
+base_config: ../base.yaml
+experiment:
+  name: exp_f_inject_50
+  generations: 3
+data:
+  synthetic_ratio: 0.5
